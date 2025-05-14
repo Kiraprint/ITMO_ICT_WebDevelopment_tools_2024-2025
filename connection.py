@@ -1,6 +1,12 @@
+import os
 from sqlmodel import SQLModel, Session, create_engine
 
-db_url = 'postgresql://postgres:123@localhost/warriors_db'
+username = os.getenv("DB_USERNAME", "postgres")
+password = os.getenv("DB_PASSWORD", "")
+host = os.getenv("DB_HOST", "localhost")
+database = os.getenv("DB_NAME", "web_team_finder")
+
+db_url = f'postgresql://{username}:{password}@{host}/{database}'
 engine = create_engine(db_url, echo=True)
 
 

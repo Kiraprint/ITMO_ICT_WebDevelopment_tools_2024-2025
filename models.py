@@ -45,6 +45,27 @@ class TaskBase(SQLModel):
     status: Optional[str] = None
     deadline: Optional[datetime] = None
 
+
+# Response models with relationships for GET requests
+class UserResponse(UserBase):
+    skills: List[SkillBase] = []
+    teams: List[TeamBase] = []
+    tasks: List[TaskBase] = []
+
+class TeamResponse(TeamBase):
+    members: List[UserBase] = []
+    projects: List[ProjectBase] = []
+
+class ProjectResponse(ProjectBase):
+    teams: List[TeamBase] = []
+    tasks: List[TaskBase] = []
+    recommended_skills: List[SkillBase] = []
+
+class TaskResponse(TaskBase):
+    project: Optional[ProjectBase] = None
+    assigned_user: Optional[UserBase] = None
+
+
 # Существующие модели связей
 class UserSkillLink(SQLModel, table=True):
     user_id: Optional[int] = Field(default=None, foreign_key="user.id", primary_key=True)
@@ -64,12 +85,18 @@ class ProjectTeamLink(SQLModel, table=True):
     start_date: datetime
     end_date: Optional[datetime] = None
 
+class ProjectSkillLink(SQLModel, table=True):
+    project_id: Optional[int] = Field(default=None, foreign_key="project.id", primary_key=True)
+    skill_id: Optional[int] = Field(default=None, foreign_key="skill.id", primary_key=True)
+    importance: Optional[int] = Field(default=1)  # 1-5 scale of importance
+
 # Основные модели
 class Skill(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
     name: str
     description: str
     users: List["User"] = Relationship(back_populates="skills", link_model=UserSkillLink)
+    projects: List["Project"] = Relationship(link_model=ProjectSkillLink)
 
 class User(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
@@ -88,7 +115,7 @@ class Team(SQLModel, table=True):
     description: str
     created_at: datetime
     members: List[User] = Relationship(back_populates="teams", link_model=TeamMemberLink)
-    projects: List["Project"] = Relationship(back_populates="projects", link_model=ProjectTeamLink)
+    projects: List["Project"] = Relationship(back_populates="teams", link_model=ProjectTeamLink)
 
 class Project(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
@@ -98,7 +125,10 @@ class Project(SQLModel, table=True):
     end_date: Optional[datetime] = None
     status: str
     teams: List[Team] = Relationship(back_populates="projects", link_model=ProjectTeamLink)
-    tasks: List["Task"] = Relationship(back_populates="project")
+    tasks: List["Task"] = Relationship(back_populates="project", sa_relationship_kwargs={
+        "cascade": "all, delete",
+    },)
+    recommended_skills: List[Skill] = Relationship(link_model=ProjectSkillLink)
 
 class Task(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
