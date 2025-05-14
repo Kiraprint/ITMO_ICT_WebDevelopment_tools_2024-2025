@@ -1,8 +1,22 @@
 from datetime import datetime
 from enum import Enum
 from typing import List, Optional
+from pydantic import EmailStr
 
 from sqlmodel import Field, SQLModel, Relationship
+from passlib.context import CryptContext
+from dotenv import load_dotenv
+import os
+
+# Password hashing context
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+load_dotenv()
+
+# JWT settings
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 class SkillLevel(str, Enum):
     BEGINNER = "beginner"
@@ -14,6 +28,30 @@ class TeamRole(str, Enum):
     LEADER = "leader"
     MEMBER = "member"
     MENTOR = "mentor"
+
+# User authentication models
+class Token(SQLModel):
+    access_token: str
+    token_type: str
+
+class TokenData(SQLModel):
+    username: Optional[str] = None
+
+class UserCreate(SQLModel):
+    username: str
+    email: EmailStr
+    full_name: str
+    password: str
+    bio: Optional[str] = None
+    years_of_experience: float = 0.0
+
+class UserLogin(SQLModel):
+    username: str
+    password: str
+
+class PasswordChange(SQLModel):
+    current_password: str
+    new_password: str
 
 # Базовые модели для обновления (без связей)
 class UserBase(SQLModel):
@@ -100,11 +138,14 @@ class Skill(SQLModel, table=True):
 
 class User(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
-    username: str
+    username: str = Field(index=True, unique=True)
     full_name: str
-    email: str
+    email: str = Field(index=True, unique=True)
+    hashed_password: str
     bio: Optional[str] = None
-    years_of_experience: float
+    years_of_experience: float = 0.0
+    is_active: bool = True
+    created_at: datetime = Field(default_factory=datetime.now)
     skills: List[Skill] = Relationship(back_populates="users", link_model=UserSkillLink)
     teams: List["Team"] = Relationship(back_populates="members", link_model=TeamMemberLink)
     tasks: List["Task"] = Relationship(back_populates="assigned_user")
