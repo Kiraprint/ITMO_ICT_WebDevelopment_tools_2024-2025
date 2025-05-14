@@ -5,15 +5,18 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlmodel import Session, select
 from passlib.context import CryptContext
-
+import os
+from dotenv import load_dotenv
 from models import User, TokenData
 from connection import get_session
 
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+load_dotenv()
+
 # JWT settings
-SECRET_KEY = "YOUR_SECRET_KEY_HERE"  # Change this to a secure random key in production
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
