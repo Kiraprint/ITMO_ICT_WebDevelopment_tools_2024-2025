@@ -49,7 +49,12 @@ nav:
   - Разработка:
     - Настройка: development/setup.md
     - База данных: development/database.md
+    - Асинхронная БД: development/async_database.md
   - Лабораторные работы:
     - Лаб. 1: labs/lab1.md
     - Лаб. 2: labs/lab2.md
     - Лаб. 3: labs/lab3.md
+  - LeetCode задачи: 
+    - Обзор: leetcode/index.md
+    - 3Sum: leetcode/3sum.md
+    - Letter Combinations: leetcode/letter-combinations.md
