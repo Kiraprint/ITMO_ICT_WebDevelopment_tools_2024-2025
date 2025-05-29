@@ -17,7 +17,7 @@ def multiprocess_sum(ranges):
 def main():
     # Разбиваем задачу на части
     num_processes = multiprocessing.cpu_count()
-    total_range = 100_000_000
+    total_range = 10**9
     chunk_size = total_range // num_processes
     
     ranges = []

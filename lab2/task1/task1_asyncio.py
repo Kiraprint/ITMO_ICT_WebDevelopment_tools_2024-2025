@@ -13,7 +13,7 @@ async def async_sum(ranges):
 async def main():
     # Разбиваем задачу на части
     num_tasks = 8
-    total_range = 100_000_000
+    total_range = 10**9
     chunk_size = total_range // num_tasks
     
     ranges = []

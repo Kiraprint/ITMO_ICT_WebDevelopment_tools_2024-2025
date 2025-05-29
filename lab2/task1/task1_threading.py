@@ -26,7 +26,7 @@ def threaded_sum(ranges):
 def main():
     # Разбиваем задачу на части
     num_threads = 1
-    total_range = 100_000_000
+    total_range = 10**9
     chunk_size = total_range // num_threads
     
     ranges = []
