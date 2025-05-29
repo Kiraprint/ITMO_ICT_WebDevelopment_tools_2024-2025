@@ -1,7 +1,6 @@
 import asyncio
 import aiohttp
 import time
-import random
 import re
 from bs4 import BeautifulSoup
 from sqlalchemy.future import select
@@ -155,7 +154,6 @@ async def process_jobs(start_id: int, end_id: int):
         tasks = []
         for job_id in range(start_id, end_id + 1):
             # Добавляем случайную задержку между запросами
-            await asyncio.sleep(random.uniform(0.05, 0.1))
             task = asyncio.create_task(parse_job(http_session, job_id))
             tasks.append(task)
         
@@ -171,8 +169,8 @@ async def main():
     start_time = time.time()
     
     # Диапазон ID вакансий для парсинга
-    start_id = 90001
-    end_id = 140570
+    start_id = 0
+    end_id = 1500
     
     # Обрабатываем вакансии асинхронно
     results = await process_jobs(start_id, end_id)

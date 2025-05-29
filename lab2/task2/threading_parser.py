@@ -1,8 +1,7 @@
 import threading
 import requests
 import time
-import random
-import json
+
 from sqlmodel import Session, select
 from connection import engine
 from models import Skill
@@ -152,8 +151,6 @@ def worker(job_queue):
         try:
             job_id = job_queue.get(block=False)
             parse_job(job_id)
-            # Случайная задержка между запросами
-            time.sleep(random.uniform(0.2, 0.5))
         except queue.Empty:
             break
         except Exception as e:
@@ -166,7 +163,7 @@ def main():
     
     # Диапазон ID вакансий для парсинга
     start_id = 0
-    end_id = 45000
+    end_id = 1500
     
     # Создаем очередь вакансий для обработки
     job_queue = queue.Queue()
@@ -182,8 +179,7 @@ def main():
         thread.daemon = True
         threads.append(thread)
         thread.start()
-        # Небольшая задержка между запуском потоков
-        time.sleep(0.1)
+
     
     # Ожидаем завершения всех задач в очереди
     job_queue.join()

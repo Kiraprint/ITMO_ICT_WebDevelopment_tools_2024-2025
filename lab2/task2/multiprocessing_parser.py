@@ -1,8 +1,7 @@
 import multiprocessing
 import requests
 import time
-import random
-import json
+
 from sqlmodel import Session, select
 from connection import engine
 from models import Skill
@@ -150,8 +149,6 @@ def process_batch(job_ids):
     for job_id in job_ids:
         try:
             parse_job(job_id)
-            # Случайная задержка между запросами
-            time.sleep(random.uniform(0.2, 0.5))
         except Exception as e:
             print(f"Ошибка в процессе {multiprocessing.current_process().name} при обработке вакансии {job_id}: {e}")
 
@@ -159,8 +156,8 @@ def main():
     start_time = time.time()
     
     # Диапазон ID вакансий для парсинга
-    start_id = 45_001
-    end_id = 90_000
+    start_id = 0
+    end_id = 1500
     
     # Получаем список всех ID вакансий
     job_ids = list(range(start_id, end_id + 1))
@@ -204,6 +201,4 @@ def main():
     print(f"Всего обработано вакансий: {end_id - start_id + 1}")
 
 if __name__ == "__main__":
-    # Для Windows необходимо защитить точку входа
-    multiprocessing.freeze_support()
     main()
