@@ -3,12 +3,12 @@ from dotenv import load_dotenv
 from sqlmodel import SQLModel, Session, create_engine
 
 load_dotenv()
-username = os.getenv("DB_USERNAME", "postgres")
-password = os.getenv("DB_PASSWORD", "")
-host = os.getenv("DB_HOST", "localhost")
-database = os.getenv("DB_NAME", "web_team_finder")
 
-db_url = f'postgresql://{username}:{password}@{host}/{database}'
+db_password = os.environ["DB_PASSWORD"]
+db_name = os.environ["DB_NAME"]
+db_admin = os.environ["DB_ADMIN"]
+
+db_url = f"postgresql://{db_admin}:{db_password}@db:5432/{db_name}"
 engine = create_engine(db_url, echo=True)
 
 

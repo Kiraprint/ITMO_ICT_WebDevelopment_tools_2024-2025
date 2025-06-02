@@ -1,9 +1,13 @@
+import asyncio
+import time
 from fastapi import FastAPI, HTTPException, Query, Depends, status
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import List, Optional
-from sqlmodel import Session, select, delete
+from sqlmodel import Session, select
 from contextlib import asynccontextmanager
 from datetime import timedelta
+import httpx
+import os
 
 from models import (
     Project, Skill, Team, TeamMemberLink, User, UserSkillLink, SkillLevel, Task, 
@@ -12,11 +16,13 @@ from models import (
     UserCreate, UserLogin, Token, PasswordChange
 )
 from connection import get_session, init_db
+from lab2.task2.async_parser import main as async_parser_job
 from auth import (
     authenticate_user, create_access_token, get_current_user, 
     get_current_active_user, get_password_hash, verify_password,
     ACCESS_TOKEN_EXPIRE_MINUTES
 )
+from tasks import parse_task
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -716,3 +722,52 @@ def add_project_team(
     session.commit()
     session.refresh(project_team)
     return project_team
+
+@app.post("/parse")
+async def parse(start_id: int, end_id: int):
+    """
+    Start an asynchronous parsing task
+    """
+    try:
+        # Start the Celery task
+        task = parse_task.delay(start_id, end_id)
+        return {
+            "task_id": task.id,
+            "status": "Task started",
+            "message": "Parsing task has been queued"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/parse/status/{task_id}")
+async def get_task_status(task_id: str):
+    """
+    Get the status of a parsing task
+    """
+    try:
+        task = parse_task.AsyncResult(task_id)
+        if task.state == 'PENDING':
+            response = {
+                'state': task.state,
+                'status': 'Task is waiting for execution or unknown'
+            }
+        elif task.state == 'STARTED':
+            response = {
+                'state': task.state,
+                'status': 'Task has been started'
+            }
+        elif task.state == 'SUCCESS':
+            response = {
+                'state': task.state,
+                'status': 'Task completed successfully',
+                'result': task.result
+            }
+        else:
+            response = {
+                'state': task.state,
+                'status': 'Task failed',
+                'error': str(task.info)
+            }
+        return response
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
