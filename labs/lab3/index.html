@@ -13,10 +13,8 @@
       
       
       
-        <link rel="prev" href="../../development/async_database/">
+        <link rel="prev" href="../lab2/">
       
-      
-        <link rel="next" href="../lab2/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Лаб. 1 - API Поиска Веб-Команд</title>
+        <title>Лаб. 3 - API Поиска Веб-Команд</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-fastapi" class="md-skip">
+        <a href="#celery-redis" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -108,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Лаб. 1
+              Лаб. 3
             
           </span>
         </div>
@@ -258,7 +256,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../lab1/" class="md-tabs__link">
           
   
   
@@ -718,32 +716,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Лаб. 1
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
         
   
   
@@ -754,104 +730,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Содержание
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Цель
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Реализация
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Реализация">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Архитектура
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Основные модели данных
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ключевые эндпоинты
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      Документация
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      Безопасность
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      Дополнительные функции
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -884,10 +762,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lab3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Лаб. 3
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -898,6 +798,203 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Цель работы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Выполненные задачи
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Выполненные задачи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Добавление новых сервисов в Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-celery" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Создание конфигурации Celery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Реализация асинхронной задачи
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Обновление API эндпоинтов
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Архитектура решения
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Архитектура решения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Компоненты системы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Процесс обработки задачи
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Преимущества решения
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Преимущества решения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Технические преимущества
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Пользовательские преимущества
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Примеры использования
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Примеры использования">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Запуск задачи
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Проверка статуса
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Заключение
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Дальнейшие улучшения
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1048,55 +1145,110 @@
   
 
 
-<h1 id="1-fastapi">Лабораторная работа 1: Реализация серверного приложения FastAPI</h1>
-<h2 id="_1">Цель</h2>
-<p>Целью данной лабораторной работы является создание серверного приложения с использованием фреймворка FastAPI для управления пользователями, командами, проектами, навыками и задачами для платформы командного сотрудничества.</p>
-<h2 id="_2">Реализация</h2>
-<h3 id="_3">Архитектура</h3>
+<p>Я помогу составить отчёт о проделанной работе по интеграции Celery и Redis в проект.</p>
+<h1 id="celery-redis">Отчёт по интеграции Celery и Redis</h1>
+<h2 id="1">1. Цель работы</h2>
+<p>Интеграция асинхронной обработки задач с использованием Celery и Redis в существующее FastAPI приложение для улучшения производительности и масштабируемости системы.</p>
+<h2 id="2">2. Выполненные задачи</h2>
+<h3 id="21-docker-compose">2.1. Добавление новых сервисов в Docker Compose</h3>
 <ul>
-<li>Использовали FastAPI для создания REST API</li>
-<li>SQLModel (надстройка над SQLAlchemy) для работы с базой данных PostgreSQL</li>
-<li>JWT-токены для аутентификации</li>
-<li>Docker для контейнеризации</li>
+<li>Добавлен сервис Redis версии 7 для работы в качестве брокера сообщений</li>
+<li>Добавлен сервис Celery Worker для обработки асинхронных задач</li>
+<li>Настроены зависимости между сервисами</li>
+<li>Добавлены необходимые переменные окружения для корректной работы сервисов</li>
 </ul>
-<h3 id="_4">Основные модели данных</h3>
+<h3 id="22-celery">2.2. Создание конфигурации Celery</h3>
 <ul>
-<li>User (пользователи)</li>
-<li>Team (команды)</li>
-<li>Project (проекты)</li>
-<li>Skill (навыки)</li>
-<li>Task (задачи)</li>
-<li>Связующие таблицы (UserSkillLink, TeamMemberLink, ProjectTeamLink и др.)</li>
+<li>Создан файл <code>tasks.py</code> с настройками Celery</li>
+<li>Настроено подключение к Redis как брокеру сообщений</li>
+<li>Настроена сериализация задач и результатов в JSON</li>
+<li>Настроены временные зоны и другие параметры Celery</li>
 </ul>
-<h3 id="_5">Ключевые эндпоинты</h3>
+<h3 id="23">2.3. Реализация асинхронной задачи</h3>
 <ul>
-<li>Аутентификация (/auth/register, /auth/login, /auth/me)</li>
-<li>Управление пользователями (/users/*)</li>
-<li>Управление командами (/teams/*)</li>
-<li>Управление проектами (/projects/*)</li>
-<li>Управление навыками (/skills/*)</li>
-<li>Управление задачами (/tasks/*)</li>
+<li>Создана задача <code>parse_task</code> для асинхронного парсинга данных</li>
+<li>Реализовано обновление статуса задачи в процессе выполнения</li>
+<li>Добавлена обработка ошибок и возврат результатов</li>
 </ul>
-<h3 id="_6">Документация</h3>
+<h3 id="24-api">2.4. Обновление API эндпоинтов</h3>
 <ul>
-<li>Создали подробную документацию API с примерами запросов и ответов</li>
-<li>Документировали структуру базы данных</li>
-<li>Добавили инструкции по развертыванию с Docker</li>
-<li>Настроили MkDocs для удобного просмотра документации</li>
+<li>Модифицирован эндпоинт <code>/parse</code> для асинхронного запуска задач</li>
+<li>Добавлен новый эндпоинт <code>/parse/status/{task_id}</code> для отслеживания статуса задачи</li>
+<li>Реализована обработка различных состояний задачи (PENDING, STARTED, SUCCESS, FAILURE)</li>
 </ul>
-<h3 id="_7">Безопасность</h3>
+<h2 id="3">3. Архитектура решения</h2>
+<h3 id="31">3.1. Компоненты системы</h3>
 <ul>
-<li>Реализовали JWT-аутентификацию</li>
-<li>Хеширование паролей с bcrypt</li>
-<li>Проверка прав доступа для защищенных эндпоинтов</li>
+<li><strong>FastAPI приложение</strong>: основной сервис, обрабатывающий HTTP-запросы</li>
+<li><strong>Redis</strong>: брокер сообщений и хранилище результатов</li>
+<li><strong>Celery Worker</strong>: обработчик асинхронных задач</li>
+<li><strong>PostgreSQL</strong>: основное хранилище данных</li>
 </ul>
-<h3 id="_8">Дополнительные функции</h3>
+<h3 id="32">3.2. Процесс обработки задачи</h3>
+<ol>
+<li>Клиент отправляет запрос на <code>/parse</code></li>
+<li>FastAPI создает новую задачу через Celery</li>
+<li>Redis сохраняет задачу в очереди</li>
+<li>Celery Worker забирает задачу из очереди</li>
+<li>После выполнения результат сохраняется в Redis</li>
+<li>Клиент может проверить статус через <code>/parse/status/{task_id}</code></li>
+</ol>
+<h2 id="4">4. Преимущества решения</h2>
+<h3 id="41">4.1. Технические преимущества</h3>
 <ul>
-<li>Поиск пользователей по навыкам</li>
-<li>Фильтрация задач по статусу</li>
-<li>Связывание пользователей с командами и проектами</li>
+<li>Асинхронная обработка длительных операций</li>
+<li>Масштабируемость системы</li>
+<li>Отказоустойчивость</li>
+<li>Возможность мониторинга выполнения задач</li>
 </ul>
-<p>API предоставляет полный набор CRUD-операций для всех основных сущностей и обеспечивает гибкий поиск и фильтрацию данных для эффективного формирования команд разработчиков.</p>
+<h3 id="42">4.2. Пользовательские преимущества</h3>
+<ul>
+<li>Улучшенный пользовательский опыт</li>
+<li>Возможность отслеживания прогресса выполнения задач</li>
+<li>Снижение времени ожидания ответа от сервера</li>
+</ul>
+<h2 id="5">5. Примеры использования</h2>
+<h3 id="51">5.1. Запуск задачи</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">POST /parse?start_id=1&amp;end_id=100</span>
+</code></pre></div>
+Ответ:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&quot;task_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;some-task-id&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task started&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Parsing task has been queued&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="52">5.2. Проверка статуса</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">GET /parse/status/some-task-id</span>
+</code></pre></div>
+Возможные ответы:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task is waiting for execution or unknown&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STARTED&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task has been started&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task completed successfully&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
+</code></pre></div></p>
+<h2 id="6">6. Заключение</h2>
+<p>Интеграция Celery и Redis успешно выполнена. Система теперь поддерживает асинхронную обработку задач, что значительно улучшает её производительность и масштабируемость. Реализованный механизм отслеживания статуса задач позволяет пользователям контролировать процесс выполнения длительных операций.</p>
+<h2 id="7">7. Дальнейшие улучшения</h2>
+<ol>
+<li>Добавление механизма отмены задач</li>
+<li>Реализация периодических задач</li>
+<li>Добавление мониторинга производительности Celery</li>
+<li>Реализация механизма повторных попыток для неудачных задач</li>
+<li>Добавление уведомлений о завершении задач</li>
+</ol>
+<p>Хотите, чтобы я добавил какие-то дополнительные разделы или подробнее раскрыл какой-то из существующих?</p>
 
 
 
